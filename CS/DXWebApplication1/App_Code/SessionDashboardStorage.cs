@@ -6,15 +6,6 @@ using System.Web.SessionState;
 using System.Xml.Linq;
 public class SessionDashboardStorage : DashboardStorageBase {
     const string DashboardStorageKey = "DashboardStorage";
-    private static SessionDashboardStorage instance = null;
-    public static SessionDashboardStorage Instance {
-        get {
-            if (instance == null) {
-                instance = new SessionDashboardStorage();
-            }
-            return instance;
-        }
-    }
     Dictionary<string, XDocument> Storage {
         get {
             HttpSessionState session = HttpContext.Current.Session;
@@ -30,8 +21,10 @@ public class SessionDashboardStorage : DashboardStorageBase {
             throw new Exception();
         }
     }
-    protected SessionDashboardStorage() : base() {
-        RegisterDefaultDashboard("dashboard1");
+    public SessionDashboardStorage(string[] dashboardIds, string path) : base() {
+        for (int i = 0; i < dashboardIds.Length; i++) {
+            RegisterDefaultDashboard(dashboardIds[i], path);
+        }
     }
     protected override IEnumerable<string> GetAvailableDashboardsID() {
         return Storage.Keys;
@@ -47,8 +40,8 @@ public class SessionDashboardStorage : DashboardStorageBase {
     public void RegisterDashboard(string dashboardID, XDocument dashboard) {
         SaveDashboard(dashboardID, dashboard, true);
     }
-    void RegisterDefaultDashboard(string dashboardId) {
-        string dashboardLocalPath = HttpContext.Current.Server.MapPath(string.Format(@"~/App_Data/Dashboards/{0}.xml", dashboardId));
+    void RegisterDefaultDashboard(string dashboardId, string path) {
+        string dashboardLocalPath = HttpContext.Current.Server.MapPath(path + dashboardId + ".xml");        
         RegisterDashboard(dashboardId, XDocument.Load(dashboardLocalPath));
     }
 }
