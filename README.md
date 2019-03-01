@@ -1,4 +1,4 @@
-# Web Dashboard - How to navigate tabs using custom tab header buttons or set up a slide show
+# Web Dashboard - How to navigate between tabs using custom tab header buttons or set up a slide show
 <!-- default file list -->
 *Files to look at*:
 
