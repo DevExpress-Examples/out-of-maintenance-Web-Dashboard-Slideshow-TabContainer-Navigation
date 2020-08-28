@@ -6,6 +6,9 @@
 <!-- default file list end -->
 
 # Web Dashboard - How to navigate between tabs using custom tab header buttons or set up a slide show
+<!-- run online -->
+**[[Run Online]](https://codecentral.devexpress.com/172857725/)**
+<!-- run online end -->
 
 <p>The following example shows how to navigate through tabs using our Web Forms Dashboard API, i.e. create some kind of slideshow. The main idea is the following:<br/>
 1) Create custom header buttons using the approach from the <a href="https://docs.devexpress.com/Dashboard/js-DevExpress.Dashboard.ViewerApiExtensionOptions#js_DevExpress_Dashboard_ViewerApiExtensionOptions_onItemCaptionToolbarUpdated">onItemCaptionToolbarUpdated</a> documentation article.<br/>
